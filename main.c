@@ -1,4 +1,5 @@
-#include <istdio.h>
+#include <stdio.h>
+#include <stdint.h>
 
 uint8_t key[16];     // 16-byte AES key
 uint8_t state[16];   // AES block (128 bits)
@@ -26,35 +27,42 @@ static const unsigned char AES_SBOX[256] = {
 
 int NumberofRounds = 10; //Typical rounds for 128  bit AES encryption | From Slides
 
-uint8_t input[1] = 0xC2; //One slides its: 11000010
+unsigned char input = 0x6B; //One slides its: 11000010
 
 //This will be made in ECB Mode, as it will encrypt and decrypt one plaintext at a time without an additive
 
-ShiftRow () {
+/*
+int ShiftRow () {
 
 }
 
-MixColumn () {
+int MixColumn () {
 
 }
 
-AddRoundKey () {
+int AddRoundKey () {
 
 }
-
+*/
  
 unsigned char SBox (unsigned char x) { //Structure of Sbox used to map values to their multiplitive inverse. 
     return AES_SBOX[x];  
 }
 
-Struct AES (int input, int NumberofRounds, key?) { //Used for both encryption and decryption since everything is inveritable. 
-    
-
+/*
+AES (int input, int NumberofRounds, key?) { //Used for both encryption and decryption since everything is inveritable. 
+  
 }
-
+*/
 
 int main() {
-        
+    
+
+    unsigned char output = SBox(input);
+
+    printf("Input:  0x%02X\n", input);
+    printf("SBox:   0x%02X\n", output);
+
     printf("AES, program");
     return 0;
 }
